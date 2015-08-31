@@ -5,7 +5,7 @@
     <link rel="apple-touch-icon" href="/schm/apple-touch.png" />
     <link rel="stylesheet" type="text/css" href="css/schm.css"/>
     <script src="js/jquery-1.10.1.min.js"></script>
-    <script src="http://connect.soundcloud.com/sdk.js"></script>
+    <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
     <script src="js/schm.js"></script>
     <script id="body-tmpl" type="text/html">
         <div id="infoBar">

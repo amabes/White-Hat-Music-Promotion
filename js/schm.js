@@ -3,7 +3,7 @@ SC.initialize({
     client_secret: '47e657ef42672c330356977c078bedac',
     redirect_uri: 'http://alanmabry.com/schm/callback.html'
 });
-if(typeof(SCHM=='undefined')){
+if(typeof(SCHM)=='undefined'){
     SCHM = {
         data:{
             me:{
@@ -13,13 +13,10 @@ if(typeof(SCHM=='undefined')){
     }    
 }
 function groupAdd(group,track){
-    SC.put('/groups/'+group+'/contributions/'+track, function(reply, e){
-        if(e){
-            if(e.message){
-                if(e.message == 'Hold your horses! Your track has reached the maximum of 75 group contributions.'){
-                    return false;
-                }    
-            }
+    SC.put('/groups/'+group+'/contributions/'+track, function(data){
+        if(data.errors!=undefined && data.errors.length!=0){
+            console.log(data.errors);
+            return false;
         }
     });
 }
@@ -33,40 +30,39 @@ function groupAddMulti(track){
     var i = 0;
     var groupMultiTime = setInterval(function(){
         if(i <= 75){
-            groupAdd(SCHM.data.groups[i].id,track);
+            //console.log('add ('+i+')');
+            if(groupAdd(SCHM.data.groups[i].id,track) == false){
+                groupMultiTime = window.clearInterval(groupMultiTime);    
+            }
         }else{
-            $('.groupAdd, .groupDel').removeClass('loading');
+            $('.groupAdd').removeClass('loading');
             console.log('Track added to 75 groups');
             groupMultiTime = window.clearInterval(groupMultiTime);
         }
         i++;
-    },100);
+    },500);
 }
-function groupPreAdd(track,callback){
+function groupDelAll(track,callback){
     $.each(SCHM.data.groups,function(i){
         groupDel(this.id,track);
         if(i == SCHM.data.groups.length-1){
             console.log("removed from all groups");
-            if($.isFunction(callback)) callback(track);
-        }
-    });
-}
-function groupDelMulti(track){
-    $.each(SCHM.data.groups,function(i){
-        groupDel(this.id,track);
-        if(i == SCHM.data.groups.length-1){
-            console.log("removed track");
+            var slowDown = setTimeout(function(){
+                if($.isFunction(callback)) callback(track);
+            },3000);
         }
     });
 }
 function shuffleArray(d){
-    for(var c=d.length-1;c>0;c--){
-        var b=Math.floor(Math.random()*(c+1));
-        var a=d[c];
-        d[c]=d[b];
-        d[b]=a
-    }
+    if(d!=null){
+        for(var c=d.length-1;c>0;c--){
+            var b=Math.floor(Math.random()*(c+1));
+            var a=d[c];
+            d[c]=d[b];
+            d[b]=a
+        }
         return d;
+    }
 }
 function soundCloudHypeMan(){
     $('body').html($('#body-tmpl').html());
@@ -98,17 +94,20 @@ function soundCloudHypeMan(){
                 }else{
                     var id = $(this).attr('rel')
                     $(this).addClass('inactive loading');
-                    groupPreAdd(id,function(track){
+                    groupDelAll(id,function(track){
                         groupAddMulti(track);
                     });
                 }
             });
         });
     });
-    SC.get('/me/groups', {limit:400}, function(groups){
-        SCHM.data.groups = ''; // TODO: needed?
+    SC.get('/me/groups', {limit:100}, function(groups){
+        console.log(groups);
+        if(groups == null){
+            alert('refresh');
+        }
         SCHM.data.groups = shuffleArray(groups);
-        $('.groupAdd, .groupDel').removeClass('inactive loading');
+        $('.groupAdd').removeClass('inactive loading');
     });
 }
 $(document).ready(function(){

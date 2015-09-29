@@ -25,31 +25,39 @@ function groupDel(group,track){
         // do something
     });
 }
+function checkGroups(id,callback){
+    SC.get('/tracks/'+id+'/groups',function(data){
+        if($.isFunction(callback)) callback(data);
+    });
+}
 function groupAddMulti(track){
     console.log("adding to groups...");
     var i = 0;
     var groupMultiTime = setInterval(function(){
-        if(i <= 75){
-            //console.log('add ('+i+')');
-            if(groupAdd(SCHM.data.groups[i].id,track) == false){
-                groupMultiTime = window.clearInterval(groupMultiTime);    
-            }
+        if(i < 74){ // maximum groups a track can be in is 75.
+            groupAdd(SCHM.data.groups[i].id,track);
+            i++;
         }else{
             $('.groupAdd').removeClass('loading');
             console.log('Track added to 75 groups');
             groupMultiTime = window.clearInterval(groupMultiTime);
         }
-        i++;
     },500);
 }
 function groupDelAll(track,callback){
-    $.each(SCHM.data.groups,function(i){
-        groupDel(this.id,track);
-        if(i == SCHM.data.groups.length-1){
-            console.log("removed from all groups");
-            var slowDown = setTimeout(function(){
-                if($.isFunction(callback)) callback(track);
-            },3000);
+    checkGroups(track,function(groups){
+        if(groups.length==0){
+            if($.isFunction(callback)) callback(track);
+        }else{
+            for(var i=0;i<groups.length;i++){
+                groupDel(groups[i].id,track);
+                if(i == groups.length-1){
+                    setTimeout(function(){
+                        console.log("removed from all groups");
+                        if($.isFunction(callback)) callback(track);
+                    },3000);
+                }
+            }
         }
     });
 }
@@ -65,6 +73,7 @@ function shuffleArray(d){
     }
 }
 function soundCloudHypeMan(){
+    var debug = false;
     $('body').html($('#body-tmpl').html());
     SC.get('/me', function(me){
         SCHM.data.me.basic = '';
@@ -95,7 +104,17 @@ function soundCloudHypeMan(){
                     var id = $(this).attr('rel')
                     $(this).addClass('inactive loading');
                     groupDelAll(id,function(track){
-                        groupAddMulti(track);
+                        if(debug){
+                            var markup = '<div id="done-removing-from-groups"><a id="check-groups" rel="'+id+'" href="javascript:void(0);">Check Groups</a></div>';
+                            $('body').prepend(markup);
+                            $('#check-groups').click(function(){
+                                var id = $(this).attr('rel');
+                                checkGroups(id);
+                                $('#done-removing-from-groups').remove();
+                            });
+                        }else{
+                            groupAddMulti(track);
+                        }
                     });
                 }
             });

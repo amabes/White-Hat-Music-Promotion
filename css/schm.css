@@ -44,8 +44,8 @@ h2 {text-align: center;font-size: 20px;}
 #tracks li .groupBtn .ico {display: block;background: rgba(255,255,255,.3);padding: 2px 8px;border-radius: 10px;top:15px;position: relative;font-size: 30px;}
 #tracks li .groupBtn.loading .ico {background: url("../imgs/ajaxBlue.gif") no-repeat center center transparent;text-indent: -2000px;}
 #tracks li .groupAdd {background:dodgerblue;}
-#tracks li .groupDel {background:darkgrey;}
-#tracks li .groupDel .ico {padding: 0 11px 3px;top: 18px;}
+#tracks li .groupDel, #tracks li .trackControl {background:darkgrey;}
+#tracks li .groupDel .ico, #tracks li .trackControl .ico {padding: 0 11px 3px;top: 18px;}
 
 #done-removing-from-groups {
     z-index: 3;

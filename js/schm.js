@@ -12,6 +12,12 @@ if(typeof(SCHM)=='undefined'){
         }
     }    
 }
+function trackControl(params,callback){
+    SC.stream('/tracks/'+params.track,function(player){
+      player[params.type]();
+      if($.isFunction(callback)) callback(player);
+    });
+}
 function groupAdd(group,track){
     SC.put('/groups/'+group+'/contributions/'+track, function(data){
         if(data.errors!=undefined && data.errors.length!=0){
@@ -37,6 +43,7 @@ function groupAddMulti(track){
         if(i < 74){ // maximum groups a track can be in is 75.
             groupAdd(SCHM.data.groups[i].id,track);
             i++;
+            console.log('Added to '+i+' group(s)');
         }else{
             $('.groupAdd').removeClass('loading');
             console.log('Track added to 75 groups');
@@ -93,15 +100,54 @@ function soundCloudHypeMan(){
                     imgUrl = this.artwork_url;
                 }
                 if(this.sharing == 'public'){
-                    $('#tracks').append('<li class="row-'+index+1+'"><div class="imgHold leftey"><img src="'+imgUrl+'" height="100" width="100"/><div class="imgHold-plays">'+this.playback_count+' plays</div></div><div class="trackRowRight leftey"><div class="trackTitle">'+this.title+'</div><a class="groupAdd loading groupBtn leftey" rel="'+this.id+'" href="javascript:void(0);" title="Add '+this.title+' to Groups"><span class="ico">+</span></a></div><div class="clear"></div></li>');
+                    var markup_track =
+                        '<li class="row-'+index+1+'">'+
+                            '<div class="imgHold leftey">'+
+                                '<img src="'+imgUrl+'" height="100" width="100"/>'+
+                                '<div class="imgHold-plays">'+this.playback_count+' plays</div>'+
+                            '</div>'+
+                            '<div class="trackRowRight leftey">'+
+                            '<div class="trackTitle">'+this.title+'</div>'+
+                                '<a class="groupAdd loading groupBtn leftey" rel="'+this.id+'" href="javascript:void(0);" title="Add '+this.title+' to Groups">'+
+                                    '<span class="ico">+</span>'+
+                                '</a>'+
+                                // '<a class="trackControl loading groupBtn leftey" type="play" rel="'+this.id+'" href="javascript:void(0);">'+
+                                //     '<span class="ico">></span>'+
+                                // '</a>'+
+                            '</div>'+
+                            '<div class="clear"></div>'+
+                        '</li>'
+                    $('#tracks').append(markup_track);
                 }
             });
             $('#ib-plays').html(SCHM.data.me.plays+' plays');
+            $('.trackControl').click(function(){
+                var that = $(this);
+                if(that.hasClass('inactive') || that.hasClass('loading')){
+                    // TODO: refactor
+                }else{
+                    var id = that.attr('rel'),
+                        type = that.attr('type');
+                    if(type=='play'){
+                        that.attr('type','pause');
+                        that.find('.ico').html('||');
+                    }else{
+                        that.attr('type','play');
+                        that.find('.ico').html('>');
+                    }
+                    trackControl({
+                        track:id,
+                        type:type
+                    },function(player){
+                        console.log(player);
+                    });
+                }
+            });
             $('.groupAdd').click(function(){
                 if($(this).hasClass('inactive') || $(this).hasClass('loading')){
                     // TODO: refactor
                 }else{
-                    var id = $(this).attr('rel')
+                    var id = $(this).attr('rel');
                     $(this).addClass('inactive loading');
                     groupDelAll(id,function(track){
                         if(debug){
@@ -120,13 +166,13 @@ function soundCloudHypeMan(){
             });
         });
     });
-    SC.get('/me/groups', {limit:100}, function(groups){
+    SC.get('/me/groups', {limit:400}, function(groups){
         console.log(groups);
         if(groups == null){
             alert('refresh');
         }
         SCHM.data.groups = shuffleArray(groups);
-        $('.groupAdd').removeClass('inactive loading');
+        $('.groupAdd, .trackControl').removeClass('inactive loading');
     });
 }
 $(document).ready(function(){

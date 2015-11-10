@@ -37,19 +37,30 @@ function checkGroups(id,callback){
     });
 }
 function groupAddMulti(track){
-    console.log("adding to groups...");
+
     var i = 0;
+    
     var groupMultiTime = setInterval(function(){
+        
         if(i < 74){ // maximum groups a track can be in is 75.
+            
             groupAdd(SCHM.data.groups[i].id,track);
+            
             i++;
-            console.log('Added to '+i+' group(s)');
+            
+            //console.log('Added to '+i+' group(s)');
         }else{
+            
             $('.groupAdd').removeClass('loading');
-            console.log('Track added to 75 groups');
+
+            OA.alert.run('green', 'Track added to 75 groups', 2500);
+
             groupMultiTime = window.clearInterval(groupMultiTime);
+
         }
+
     },500);
+
 }
 function groupDelAll(track,callback){
     checkGroups(track,function(groups){
@@ -81,7 +92,7 @@ function shuffleArray(d){
 }
 function soundCloudHypeMan(){
     var debug = false;
-    $('body').html($('#body-tmpl').html());
+    $('body').html($('#body-tmpl').html()).removeClass('front');
     SC.get('/me', function(me){
         SCHM.data.me.basic = '';
         SCHM.data.me.basic = me;

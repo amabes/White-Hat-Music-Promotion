@@ -1,0 +1,142 @@
+.iam-alert {
+    display: block;
+    line-height: 24px;
+    min-height: 40px;
+    position: fixed;
+    z-index: 99999999999;
+    width: 90%;
+    bottom: -1000px;
+    position: fixed;
+    left: 50%;
+    margin: 0 0 0 -45%;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    -ms-transition: all 0.15s ease;
+    -o-transition: all 0.15s ease;
+    transition: all 0.15s ease
+}
+
+.iam-alert .alert-content {
+    padding: 1% 2%
+}
+
+@media (max-width: 767px) {
+    .iam-alert .alert-content {
+        padding: 2%
+    }
+}
+
+.iam-alert.alert-yellow {
+    background: #FFC200
+}
+
+.iam-alert.alert-red {
+    background: #E74C3C
+}
+
+.iam-alert.alert-green {
+    background: #5ac58d
+}
+
+.iam-alert .txt {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    color: white;
+    margin: 0 0 0 5px;
+    -webkit-transition: 0 0 6px rgba(0, 0, 0, 0.2);
+    -moz-transition: 0 0 6px rgba(0, 0, 0, 0.2);
+    -ms-transition: 0 0 6px rgba(0, 0, 0, 0.2);
+    -o-transition: 0 0 6px rgba(0, 0, 0, 0.2);
+    transition: 0 0 6px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px
+}
+
+@media (max-width: 767px) {
+    .iam-alert .txt {
+        font-size: 14px;
+        text-overflow: ellipsis;
+        width: 82%;
+        white-space: nowrap;
+        overflow: hidden
+    }
+}
+
+.iam-alert .alert-close {
+    display: block;
+    font-size: 22px;
+    text-decoration: none;
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    color: rgba(0, 0, 0, 0.4) !important;
+    font-weight: bold;
+    margin: 0 0 0 1%
+}
+
+.iam-alert .alert-close:hover {
+    color: #000 !important;
+    background: none !important
+}
+
+.iam-alert .alert-close:hover:before {
+    content: ":" !important
+}
+
+@media (max-width: 767px) {
+    .iam-alert .alert-close {
+        font-size: 19px
+    }
+}
+
+.feedback {
+    position: fixed;
+    background: white;
+    top: 80px;
+    right: 20px;
+    border-radius: 4px;
+    border: 1px #EFEFEF;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+    opacity: 0;
+    z-index: 9999999999
+}
+
+.feedback img {
+    height: 50px;
+    width: 50px;
+    float: left;
+    border-radius: 4px 0 0 4px;
+    border-right: 1px #EFEFEF solid
+}
+
+.feedback div {
+    font-size: 12px;
+    color: #484848;
+    padding: 10px;
+    float: left
+}
+
+.feedback div strong,
+.feedback div span {
+    display: inline-block
+}
+
+.feedback a {
+    font-size: 13px;
+    color: #D6D6D6;
+    float: right;
+    opacity: 0;
+    padding: 16px 5px 16px 0;
+    text-align: left
+}
+
+.feedback a:hover {
+    color: #A0A0A0
+}
+
+.feedback:hover a {
+    opacity: 1
+}

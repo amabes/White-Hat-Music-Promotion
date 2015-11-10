@@ -1,19 +1,31 @@
 <html>
 <head>
-    <title>My Hype Man : SoundCloud</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <link rel="apple-touch-icon" href="/schm/apple-touch.png" />
-    <link rel="stylesheet" type="text/css" href="css/schm.css"/>
+    <meta charset="utf-8">
+    <title>WHITE HAT</title>
+    <meta name="description" content="White Hat Music Promotion helps artists promote their music on SoundCloud for FREE with simple mobile friendly tools.">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />-->
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/overzealous-alert.css"/>
+    <link rel="stylesheet" href="css/schm.css"/>
+    <link rel="icon" type="image/png" href="imgs/favicon.png">
+    <link rel="apple-touch-icon" href="imgs/apple-touch.png" />    
     <script src="js/jquery-1.10.1.min.js"></script>
     <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
+    <script src="js/overzealous-alert.js"></script>
     <script src="js/schm.js"></script>
+
     <script id="body-tmpl" type="text/html">
         <div id="infoBar">
             <div id="ib-avatar" class="leftey"></div>
             <div id="ib-LeftSide" class="leftey">
                 <div id="ib-username"></div>
                 <div class="clear"></div>
-                <div id="ib-followers" class="leftey"></div><div id="ib-plays" class="leftey"></div>
+                <div id="ib-followers" class="leftey"></div>
+                <div id="ib-plays" class="leftey"></div>
             </div>
             <div id="ib-rightSide" class="rightey">
             </div>
@@ -22,10 +34,12 @@
         <ul id="tracks" class="bulletinthehead"></ul>
     </script>
 </head>
-<body>
+<body class="front">
     <?php include_once("../ga.php") ?>
     <div id="infoBar">
-        <a id="soundCloudConnect" class="leftey" href="javascript:void(0);" title="Connect with SoundCloud"></a>
+        <img id="logo" src="imgs/logo.png" width="35px" class="leftey" />
+        <h3 class="leftey">WHITE HAT</h3>
+        
         <div class="rightey">
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                 <input type="hidden" name="cmd" value="_s-xclick">
@@ -36,23 +50,51 @@
             </form>
         </div>
     </div>
-    <div class="holder">
-        <div class="sector">
-            <h2>Post to groups with one click!</h2>
-            <div class="centerme">
-                <img id="schm-scrnshot" src="imgs/soundcloud-hype-man-screenshot.png"/>
-            </div>
-            <div class="clear"></div>
-            <h2>Start hyping up your crowd!</h2>
-            <a href="http://www.youtube.com/watch?v=PdQ4aKP4jvg" title="Watch on YouTube" target="_blank"><div id="hypeManLeft" class="leftey"></div></a>
-            <div id="hypeManRight" class="rightey">
-                <div id="hmr-txt">
-                    <p>"A hype man is a figure who plays a central but supporting role within a group, making his own interventions, generally aimed at hyping up the crowd while also drawing attention to the words of the MC".</p>
-                    <p>- Excerpt from <a href="http://en.wikipedia.org/wiki/Hype_man" target="_blank" title="Read full article on Wikipedia">Wikipedia</a></p>
+    
+    <div class="container">
+        <div class="row">
+            <div id="tagline" class="column centerme">
+                <h3>Grow your Fan Base</h3>
+                <h2>FREE tools that get your music heard by fans with ONE click.</h2>
+                <div class="centerme">
+                    <a id="soundCloudConnect" href="javascript:void(0);" title="Connect with SoundCloud"></a>
                 </div>
             </div>
-            <div class="clear"></div>
+        </div>
+        
+        <div id="how-it-works">
+
+            <div class="row" style="">
+                <div class="column centerme">
+                    <h3>How it works</h3>
+                    <h2>Increase SoundCloud plays, follows, likes and comments in 3 steps.</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="one-third column centerme">
+                    <p>
+                        <img id="group" class="promo-icons" src="imgs/group.png" width="60"/>
+                    </p>
+                    <h2>1. Join groups where you want your music heard.</h2>
+                </div>
+                <div class="one-third column centerme">
+                    <p>
+                        <img id="add-to-group" class="promo-icons" src="imgs/add-to-group.png" height="40"/>
+                    </p>
+                    <h2>2. Add tracks to 75 groups with ONE click.</h2>
+                </div>
+
+                <div class="one-third column centerme">
+                    <p>
+                        <img id="bell" class="promo-icons" src="imgs/bell.png" width="60"/>
+                    </p>
+                    <h2>3. Repeat steps 1-2 once a day for as long as you like.</h2>
+                </div>
+            </div>
+
         </div>
     </div>
+
 </body>
 </html>

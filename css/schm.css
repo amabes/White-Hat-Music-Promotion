@@ -1,51 +1,298 @@
-*{box-sizing: border-box;-moz-box-sizing: border-box;outline: 0;}
-body {font-family: arial;padding: 0;margin: 0;}
-form {margin:0;padding:0}
-.holder {width:100%;margin:auto;}
-.sector {width:330px;margin:80px auto 0;}
-.leftey {float:left;}
-.rightey {float:right;}
-.clear {clear:both;}
-.centerme {text-align: center;}
-.inactive {opacity:.5;}
-.bulletinthehead {list-style: none none;margin:0;padding:0}
-h1 {text-align: center;margin:4px;}
-h2 {text-align: center;font-size: 20px;}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: 0;
+}
+
+body {
+    font-family: Raleway;
+    padding: 0;
+    margin: 0;
+    color:#333;
+}
+
+body.front {
+    background: url("../imgs/crowd.jpg") center bottom white repeat-x;
+    background-size: contain;
+}
+
+form {
+    margin: 0;
+    padding: 0
+}
+
+.holder {
+    width: 100%;
+    margin: auto;
+}
+
+.sector {
+    width: 330px;
+    margin: 80px auto 0;
+}
+
+.leftey {
+    float: left;
+}
+
+.rightey {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.centerme {
+    text-align: center;
+}
+
+.inactive {
+    opacity: .5;
+}
+
+.bulletinthehead {
+    list-style: none none;
+    margin: 0;
+    padding: 0
+}
+
+h1 {
+    text-align: center;
+    margin: 4px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 20px;
+}
+
+
 /* BAR */
-#infoBar {position: fixed;background: #fff;display: block;width: 100%;padding: 6px;z-index: 2;top: 0;left: 0;box-shadow: 1px 1px 5px rgba(0,0,0,.5);}
-#ib-leftSide {margin:0 0 0 5px;}
-#ib-username {display: block;font-size:20px;font-weight: bold;margin:0 0 5px;}
-#ib-username a {text-decoration: none;color:#000;}
-#ib-username a:hover {text-decoration:underline;}
-#ib-followers {display: block;background: url("../imgs/followers.png") 0 0 no-repeat transparent;padding: 0 0 0 30px;line-height: 21px;font-weight: bold;}
-#ib-plays {background: #efefef;padding: 4px;border-radius: 4px;-moz-border-radius: 4px;margin:0 5px 0 0;font-size: 12px;}
-#ib-rightSide {}
-#ib-refresh {background: url("../imgs/refresh.png") center center no-repeat #efefef;height:20px;width: 20px;display:block;padding: 20px;border-radius: 4px;box-shadow: 0 0 5px rgba(0,0,0,.6);top: 5px;position: relative;right: 5px;}
-/* HYPE MAN */
-#hypeManLeft {background: url("../imgs/booty-agt-hype-man.jpg") -241px -45px no-repeat transparent;height: 237px;width: 145px;display:block;border-radius: 4px;-moz-border-radius: 4px;}
-#hypeManRight {width:174px;}
-#hypeManRight #hmr-txt {color: #333;line-height: 22px;}
-#hypeManRight #hmr-txt p:first-child {margin:0;}
-#soundCloudConnect {background: url("../imgs/btn-connect-sc-l.png") 0 0 no-repeat transparent;display:inline-block;width:242px;height:29px;margin: 8px;}
-#donate {margin:7px 7px 7px 0;}
-#schm-scrnshot {vertical-align: middle;text-align: center;margin:0 auto;}
+
+#infoBar {
+    position: fixed;
+    background: #2d3c50;
+    display: block;
+    width: 100%;
+    padding: 6px;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+    color:white;
+}
+
+#infoBar a {
+    color: white;
+}
+
+#infoBar #logo {
+    margin:5px 0 0 5px;
+}
+
+#infoBar h3 {
+    margin: 0 0 0 10px;
+}
+
+#ib-leftSide {
+    margin: 0 0 0 5px;
+}
+
+#ib-username {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 0 5px;
+}
+
+#ib-username a {
+    text-decoration: none;
+    color: #FFF;
+    line-height: 20px;
+    font-weight: normal;
+}
+
+#ib-username a:hover {
+    text-decoration: underline;
+}
+
+#ib-followers {
+    display: block;
+    background: url("../imgs/followers.png") 0 0 no-repeat transparent;
+    padding: 0 0 0 30px;
+    line-height: 21px;
+    font-weight: bold;
+    background-size: contain;
+}
+
+#ib-plays {
+    background: #1C2531;
+    padding: 4px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    margin: 0 0 0 5px;
+    font-size: 12px;
+}
+
+#ib-refresh {
+    background: url("../imgs/refresh.png") center center no-repeat #efefef;
+    height: 20px;
+    width: 20px;
+    display: block;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .6);
+    top: 5px;
+    position: relative;
+    right: 5px;
+}
+
+#soundCloudConnect {
+    background: url("../imgs/btn-connect-sc-l.png") 0 0 no-repeat transparent;
+    display: inline-block;
+    width: 242px;
+    height: 29px;
+    margin: 8px;
+}
+
+#donate {
+    margin: 7px 7px 7px 0;
+}
+
+/* HOW IT WORKS */
+
+#tagline {
+    margin: 15% auto 5%
+}
+
+#how-it-works {
+    background: rgba(255,255,255,.6);
+    padding: 10px;
+    margin: 0 auto 100px;
+}
+
+.promo-icons {
+    background: white;
+    padding: 10px 5px;
+    border-radius: 10px;
+}
+
+#add-to-group {
+    border: 1px grey solid;
+    padding: 10px 10px 6px;
+    margin: 8px 0px;
+}
+
 /* TRACKS */
-#tracks {position: relative;top:62px;}
-#tracks li {padding:8px;width: auto;}
-#tracks li:nth-child(2n+1) {background: #efefef;}
-#tracks li .trackRowRight {margin:0 0 0 8px;width:150px;}
-#tracks li .imgHold {position:relative;}
-#tracks li .imgHold-plays {position:absolute;bottom:0;left:0;background:rgba(0,0,0,.5);color:#fff;font-weight:bold;font-size:12px;width: 100%;padding: 4px;}
-#tracks li .trackTitle {display:block;font-size: 16px;font-weight: bold;color:dimgrey;height: 20px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-#tracks li .groupBtn {opacity:1;display:inline-block;padding:4px 8px;color:#fff;font-weight:bold;font-size: 14px;margin:8px 0 0;text-decoration: none;border-radius: 4px;width:35%;margin: 0 3% 0 0;height: 70px;text-align: center;}
-#tracks li .groupBtn:hover {opacity:.9;}
-#tracks li .groupBtn:active {box-shadow:1px 1px 5px rgba(0,0,0,.5) inset; -moz-box-shadow: 1px 1px 5px rgba(0,0,0,.5) inset}
-#tracks li .groupBtn.inactive {opacity:.3}
-#tracks li .groupBtn .ico {display: block;background: rgba(255,255,255,.3);padding: 2px 8px;border-radius: 10px;top:15px;position: relative;font-size: 30px;}
-#tracks li .groupBtn.loading .ico {background: url("../imgs/ajaxBlue.gif") no-repeat center center transparent;text-indent: -2000px;}
-#tracks li .groupAdd {background:dodgerblue;}
-#tracks li .groupDel, #tracks li .trackControl {background:darkgrey;}
-#tracks li .groupDel .ico, #tracks li .trackControl .ico {padding: 0 11px 3px;top: 18px;}
+
+#tracks {
+    position: relative;
+    top: 62px;
+}
+
+#tracks li {
+    padding: 8px;
+    width: auto;
+}
+
+#tracks li:nth-child(2n+1) {
+    background: #efefef;
+}
+
+#tracks li .trackRowRight {
+    margin: 0 0 0 8px;
+    width: 150px;
+}
+
+#tracks li .imgHold {
+    position: relative;
+}
+
+#tracks li .imgHold-plays {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    width: 100%;
+    padding: 4px;
+}
+
+#tracks li .trackTitle {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: dimgrey;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 20px;
+    margin: 5px 0;
+}
+
+#tracks li .groupBtn {
+    opacity: 1;
+    display: inline-block;
+    padding: 4px 8px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 8px 0 0;
+    text-decoration: none;
+    border-radius: 4px;
+    width: 35%;
+    margin: 0 3% 0 0;
+    height: 70px;
+    text-align: center;
+}
+
+#tracks li .groupBtn:hover {
+    opacity: .9;
+}
+
+#tracks li .groupBtn:active {
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .5) inset;
+    -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .5) inset
+}
+
+#tracks li .groupBtn.inactive {
+    opacity: .3
+}
+
+#tracks li .groupBtn .ico {
+    display: block;
+    background: rgba(255, 255, 255, .3);
+    padding: 2px 8px;
+    border-radius: 10px;
+    top: 15px;
+    position: relative;
+    font-size: 30px;
+    line-height: 30px;
+}
+
+#tracks li .groupBtn.loading .ico {
+    background: url("../imgs/ajaxBlue.gif") no-repeat center center transparent;
+    text-indent: -2000px;
+}
+
+#tracks li .groupAdd {
+    background: dodgerblue;
+}
+
+#tracks li .groupDel,
+#tracks li .trackControl {
+    background: darkgrey;
+}
+
+#tracks li .groupDel .ico,
+#tracks li .trackControl .ico {
+    padding: 0 11px 3px;
+    top: 18px;
+}
 
 #done-removing-from-groups {
     z-index: 3;
@@ -56,28 +303,73 @@ h2 {text-align: center;font-size: 20px;}
     padding: 22px 11px;
     width: 90%;
 }
+
 #done-removing-from-groups a {
-	display: block;
-	margin:0 10px 0;
+    display: block;
+    margin: 0 10px 0;
 }
 
 
 /* Desktop */
+
 @media (min-width: 1024px) {
-    .sector {min-width:250px;}
+    .sector {
+        min-width: 250px;
+    }
 }
 
+
 /* Tablet Up To Desktop */
+
 @media (min-width: 768px) and (max-width: 1023px) {
-    .sector {margin:80px auto;min-width:250px;}
+    .sector {
+        margin: 80px auto;
+        min-width: 250px;
+    }
 }
+
+
 /* Phones */
-@media (max-width: 480px){
-    body {zoom:1;}
-    .holder {margin:0 auto;width:auto!important;}
-    .sector {margin:80px auto;width: auto!important;}
-    h1 {font-size:20px;}
-    #soundCloudConnect {background: url("../imgs/btn-connect-l.png") 0 0 no-repeat transparent;display:inline-block;width:124px;height:29px;margin: 8px;}
-    #hypeManLeft {background-position:-162px -45px;width:318px;float: none!important;margin: 0 auto 20px;}
-    #hypeManRight {width: 318px;margin: auto;float: none!important;text-align: center;}
+
+@media (max-width: 480px) {
+    body {
+        zoom: 1;
+    }
+    body.front {
+        background: url("../imgs/crowd.jpg") center 210px white repeat-x;
+        background-size: cover;
+    }
+    .holder {
+        margin: 0 auto;
+        width: auto!important;
+    }
+    .sector {
+        margin: 80px auto;
+        width: auto!important;
+    }
+    h1 {
+        font-size: 20px;
+    }
+    #tagline {
+        margin: 30% auto 5%
+    }
+    #soundCloudConnect {
+        background: url("../imgs/btn-connect-l.png") 0 0 no-repeat transparent;
+        display: inline-block;
+        width: 124px;
+        height: 29px;
+        margin: 8px;
+    }
+    #hypeManLeft {
+        background-position: -162px -45px;
+        width: 318px;
+        float: none!important;
+        margin: 0 auto 20px;
+    }
+    #hypeManRight {
+        width: 318px;
+        margin: auto;
+        float: none!important;
+        text-align: center;
+    }
 }

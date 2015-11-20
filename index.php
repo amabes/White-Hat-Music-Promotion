@@ -14,21 +14,6 @@
     <link rel="icon" type="image/png" href="imgs/favicon.png">
     <link rel="apple-touch-icon" href="imgs/apple-touch.png" />    
     
-    <script id="body-tmpl" type="text/html">
-        <div id="infoBar">
-            <div id="ib-avatar" class="leftey"></div>
-            <div id="ib-LeftSide" class="leftey">
-                <div id="ib-username"></div>
-                <div class="clear"></div>
-                <div id="ib-followers" class="leftey"></div>
-                <div id="ib-plays" class="leftey"></div>
-            </div>
-            <div id="ib-rightSide" class="rightey">
-            </div>
-            <div class="clear"></div>
-        </div>
-        <ul id="tracks" class="bulletinthehead"></ul>
-    </script>
 </head>
 <body class="front">
     <?php include_once("../ga.php") ?>
@@ -97,5 +82,64 @@
     <script type="text/javascript" src="js/overzealous-alert.js"></script>
     <script type="text/javascript" src="js/schm.js"></script>
 
+    <script id="body-tmpl" type="text/html">
+        <div id="infoBar">
+            <div id="ib-avatar" class="leftey"></div>
+            <div id="ib-LeftSide" class="leftey">
+                <div id="ib-username"></div>
+                <div class="clear"></div>
+                <div id="ib-followers" class="leftey"></div>
+                <div id="ib-plays" class="leftey"></div>
+            </div>
+            <div id="ib-rightSide" class="rightey">
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div id="notice-nogroup" class="notice">
+
+            <img src="imgs/soundcloud-groups.png" />
+
+            <h3>You're not a member of any groups.</h3>
+            <a id="join-groups" href="https://soundcloud.com/search/groups?q=hip%20hop" target="_blank">Join a group</a>
+
+            <br>
+            <br>
+            <br>
+            <p>
+                Join some SoundCloud groups you think your fans would like.<br>
+                When you're done, click Get Started.
+            </p>
+
+            <a id="get-started" class="ib-refresh sc-button sc-button-cta">Get Started</a>
+
+            <div class="clear"></div>
+
+        </div>
+
+        <div id="notice-nosounds" class="notice">
+
+            <img src="imgs/soundcloud-groups.png" />
+
+            <h3>You haven't shared any sounds.</h3>
+            <a id="my-sounds" class="sc-link-cta" href="https://soundcloud.com/" target="_blank">My Sounds</a>
+
+            <br>
+            <br>
+            <br>
+            <p>
+                Upload and make sure at least one sound is <strong>PUBLIC</strong>.<br>
+                When you're done, click Get Started.
+            </p>
+
+            <a id="get-started" class="ib-refresh sc-button sc-button-cta">Get Started</a>
+
+            <div class="clear"></div>
+
+        </div>
+
+        <ul id="tracks" class="bulletinthehead"></ul>
+
+    </script>
 </body>
 </html>

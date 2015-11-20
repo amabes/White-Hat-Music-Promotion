@@ -13,11 +13,7 @@
     <link rel="stylesheet" href="css/schm.css"/>
     <link rel="icon" type="image/png" href="imgs/favicon.png">
     <link rel="apple-touch-icon" href="imgs/apple-touch.png" />    
-    <script src="js/jquery-1.10.1.min.js"></script>
-    <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
-    <script src="js/overzealous-alert.js"></script>
-    <script src="js/schm.js"></script>
-
+    
     <script id="body-tmpl" type="text/html">
         <div id="infoBar">
             <div id="ib-avatar" class="leftey"></div>
@@ -95,6 +91,11 @@
 
         </div>
     </div>
+    
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
+    <script type="text/javascript" src="js/overzealous-alert.js"></script>
+    <script type="text/javascript" src="js/schm.js"></script>
 
 </body>
 </html>

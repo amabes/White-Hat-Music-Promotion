@@ -1,7 +1,7 @@
 SC.initialize({
     client_id: 'b0e3c8efb9e7bd401fdceebedfdd0f72',
     client_secret: '47e657ef42672c330356977c078bedac',
-    redirect_uri: 'http://alanmabry.com/schm/callback.html'
+    redirect_uri: 'http://getwhitehat.com/callback.html'
 });
 if(typeof(SCHM)=='undefined'){
     SCHM = {
@@ -38,6 +38,8 @@ function checkGroups(id,callback){
 }
 function groupAddMulti(track){
 
+    OA.alert.run("yellow", "Adding to SoundCloud Groups. Please be patient...");
+
     var i = 0;
     
     var groupMultiTime = setInterval(function(){
@@ -68,13 +70,13 @@ function groupAddMulti(track){
 
             }
 
-            OA.alert.run('green', 'Track added to '+num_groups+' '+group_text, 2500);
+            OA.alert.run('green', 'Track added to '+num_groups+' '+group_text, 3500);
 
             groupMultiTime = window.clearInterval(groupMultiTime);
 
         }
 
-    },500);
+    },250);
 
 }
 function groupDelAll(track,callback){
@@ -108,7 +110,7 @@ function shuffleArray(d){
         return d;
     }
 }
-function soundCloudHypeMan(){
+function soundCloudHypeMan(callback){
     var debug = false;
     $('body').html($('#body-tmpl').html()).removeClass('front');
     SC.get('/me', function(me){
@@ -177,7 +179,8 @@ function soundCloudHypeMan(){
                                 '<div class="trackRowRight leftey">'+
                                 '<div class="trackTitle">'+this.title+'</div>'+
                                     '<a class="groupAdd loading groupBtn leftey" rel="'+this.id+'" href="javascript:void(0);" title="Add '+this.title+' to Groups">'+
-                                        '<span class="ico">+</span>'+
+                                        //'<span class="ico">+</span>'+
+                                        '<span class="txt">Promote</span>'+
                                     '</a>'+
                                     // '<a class="trackControl loading groupBtn leftey" type="play" rel="'+this.id+'" href="javascript:void(0);">'+
                                     //     '<span class="ico">></span>'+
@@ -247,6 +250,8 @@ function soundCloudHypeMan(){
                     }
                 });
 
+                if($.isFunction(callback)) callback();
+
             });
 
         });
@@ -258,10 +263,17 @@ function soundCloudHypeMan(){
 $(document).ready(function(){
     $('#soundCloudConnect').click(function(){
         SC.connect(function() {
-            soundCloudHypeMan();
+
+            soundCloudHypeMan(function(){
+
+                OA.alert.run("red", "Don't spam! Only promote 3 sounds per day.", 8000);    
+
+            });
+
             $('body').on('click','.ib-refresh',function(){
                 soundCloudHypeMan();
             });
+
         });
     });
 });
